@@ -1,0 +1,66 @@
+app:
+  kafka:
+    producer:
+      topic: accept_item
+    consumer:
+      topic: request_item
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    #    ssl:
+    #      protocol: https
+    #      trust-store-location: classpath:/app/store/truststore.jks
+    #      trust-store-password: password
+    #      key-store-location: classpath:/app/store/keystore.jks
+    #      key-store-password: password
+    #      key-password: password
+    producer:
+      retries: 0
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: 1
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  data:
+    jpa:
+      repositories:
+        enabled: true
+    elasticsearch:
+      repositories:
+        enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+    show-sql: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/storetest
+    username: postgres
+    password: postgres
+  output:
+    ansi:
+      enabled: detect
+  security:
+    user:
+      name: "test"
+  elasticsearch:
+    uris: "${ELASTIC_URI:localhost:9200}"
+    socket-timeout: 30000
+    name: "store"
+    connection-timeout: 5000
+logging:
+  pattern:
+    console: "[%red(%thread)] [%green(level)] [%blue(%logger{36}):%yellow(%line)] %magenta(%method) - %msg%n"
+
+server:
+  address: "${HTTP_BIND_ADDRESS:localhost}"
+  port: "${HTTP_BIND_PORT:3000}"
+  ssl:
+    enabled: false

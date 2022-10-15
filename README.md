@@ -74,6 +74,8 @@ after that the user will be created at database, please be careful,if you use ""
 
 ![](https://github.com/abdullahalmasri/Store/blob/master/images/database.png)
 
+----
+
 ###logging info 
 In Java, logging is an important feature that helps developers to trace out the errors. Java is the programming language that comes with the logging approach. It provides a Logging API that was introduced in Java 1.4 version. It provides the ability to capture the log file. In this section, we are going to deep dive into the Java Logger API. Also, we will cover logging level, components, Logging handlers or appenders, logging formatters or layouts, Java Logger class,
 
@@ -93,12 +95,16 @@ the refactor code in application.yml will be as below:
 
 and if you don't like it coroful all what you need to do is removing %COLOR_NAME from above statment
 
+----
+
 ###Oauth2o
 This guide shows you how to build a sample app doing various things with "social login" using OAuth 2.0 and Spring Boot.
 
 > https://spring.io/guides/tutorials/spring-boot-oauth2/
 
 i prefer always to get info about adding dependecy in your pom from spring.io related to tools needed, in my case i did that all info are easy to understand and there are many guide and examples.
+
+----
 
 ###Elasticsearch and Kibana
 
@@ -111,6 +117,11 @@ ok,this is actually the most interesting part, let's begin with guide of elastic
 > to see which compatble elasticsearch-data with elasticesearch version 
 
 the yml file will be exist in docker folder with project, 
+before you run up your docker images see this guide important for elasticsearch
+please please look at this before you run the docker image
+
+> https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html
+
 first you need to start docker i am using centos 7 so the command to start docker will be 
 
 > systemctl start docker
@@ -122,162 +133,130 @@ enter password if exists then
 you will see as below
 ![](https://github.com/abdullahalmasri/Store/blob/master/images/docker.png)
 
-###Images
+the elasticsearch will connect to localhost:9200
+and kibana at localhost:5601 
+we use kibana for testing most of time there many usage for it , but to test your Query go to console
 
-Image:
+> http://localhost:5601/app/dev_tools#/console
 
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
+```
+GET store/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
 
-> Follow your heart.
+GET store/_search
+{
+  "query": { 
+    "bool" : {
+    "must" : [
+      {
+        "match" : {
+          "id": {
+            "query": "d0395fed-9fc3-4bfb-9fdd-94c573b3ddbf"
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+    }
 
-![](https://pandao.github.io/editor.md/examples/images/8.jpg)
+  }
 
-> 图为：厦门白城沙滩 Xiamen
+}
 
-图片加链接 (Image + Link)：
+GET store/_search
+{
+  "query": { 
+  "bool" : {
+    "must" : [
+      {
+        "match_all" : {
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+  },"aggs": {
+    "name":{
+      "terms":{
+        "field":"itemName",
+        "size":10,"min_doc_count":1,
+        "shard_min_doc_count":0,
+        "show_term_doc_count_error":false,
+        "order":[
+          {"_count":"desc"},
+          {"_key":"asc"}
+          ]
 
-[![](https://pandao.github.io/editor.md/examples/images/7.jpg)](https://pandao.github.io/editor.md/examples/images/7.jpg "李健首张专辑《似水流年》封面")
+      }
 
-> 图为：李健首张专辑《似水流年》封面
+    },
+    "hat_prices":{
+      "sum":{
+        "field": "price" 
 
-----
+      }
 
-###Lists
+    }
 
-####Unordered list (-)
+  }
 
-- Item A
-- Item B
-- Item C
-
-####Unordered list (*)
-
-* Item A
-* Item B
-* Item C
-
-####Unordered list (plus sign and nested)
-
-+ Item A
-+ Item B
-  + Item B 1
-  + Item B 2
-  + Item B 3
-+ Item C
-  * Item C 1
-  * Item C 2
-  * Item C 3
-
-####Ordered list
-
-1. Item A
-2. Item B
-3. Item C
-
-----
-
-###Tables
-
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-
-| Function name | Description                |
-| ------------- | -------------------------- |
-| `help()`      | Display the help window.   |
-| `destroy()`   | **Destroy your computer!** |
-
-| Item     | Value |
-| -------- | -----:|
-| Computer | $1600 |
-| Phone    | $12   |
-| Pipe     | $1    |
-
-| Left-Aligned  | Center Aligned  | Right Aligned |
-|:------------- |:---------------:| -------------:|
-| col 3 is      | some wordy text | $1600         |
-| col 2 is      | centered        | $12           |
-| zebra stripes | are neat        | $1            |
-
-----
-
-####HTML entities
-
-&copy; &  &uml; &trade; &iexcl; &pound;
-&amp; &lt; &gt; &yen; &euro; &reg; &plusmn; &para; &sect; &brvbar; &macr; &laquo; &middot; 
-
-X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
-
-18&ordm;C  &quot;  &apos;
-
-##Escaping for Special Characters
-
-\*literal asterisks\*
-
-##Markdown extras
-
-###GFM task list
-
-- [x] GFM task list 1
-- [x] GFM task list 2
-- [ ] GFM task list 3
-  - [ ] GFM task list 3-1
-  - [ ] GFM task list 3-2
-  - [ ] GFM task list 3-3
-- [ ] GFM task list 4
-  - [ ] GFM task list 4-1
-  - [ ] GFM task list 4-2
-
-###Emoji mixed :smiley:
-
-> Blockquotes :star:
-
-####GFM task lists & Emoji & fontAwesome icon emoji & editormd logo emoji :editormd-logo-5x:
-
-- [x] :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;
-- [x] list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;
-- [x] [ ] :smiley: this is a complete item :smiley:;
-- [ ] []this is an incomplete item [test link](#) :fa-star: @pandao; 
-- [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
-  - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
-  - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
-
-###TeX(LaTeX)
-
-$$E=mc^2$$
-
-Inline $$E=mc^2$$ Inline，Inline $$E=mc^2$$ Inline。
-
-$$\(\sqrt{3x-1}+(1+x)^2\)$$
-
-$$\sin(\alpha)^{\theta}=\sum_{i=0}^{n}(x^i + \cos(f))$$
-
-###FlowChart
-
-```flow
-st=>start: Login
-op=>operation: Login operation
-cond=>condition: Successful Yes or No?
-e=>end: To admin
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
+}
 ```
 
-###Sequence Diagram
+as you see some of my search qurey for more queries please visit the guide url 
 
-```seq
-Andrew->China: Says Hello 
-Note right of China: China thinks\nabout it 
-China-->Andrew: How are you? 
-Andrew->>China: I am good thanks!
-```
+----
+
+###kafka
+
+here i use kafka only to send messages, i haven't handle it by queue, there are many uasges as well , but i worked on configuration there are template topic if you don't like to use application.yml, i left both and your choice to work with what you need also please see guide url below :
+
+> https://spring.io/projects/spring-kafka
+
+when you run the application and save your items you will see that the kafka producer is create message using topic "accept_item" and after the database save the item and the elasticesearch save the same item you be notied that the consumer will show message that the elasticsearch saved well the item depends on validation if its right,to start kafka you will enter the docker-image folder and type the command below:
+
+> sudo docker-compose -f kafka.yml up -d
+
+keep remember before you run the application you need to docker up the elasticsearch docker image and kakfa docker image:
+always check twice if image are up by : 
+
+> docker ps
+
+----
+
+###application diagram
+
+![](https://github.com/abdullahalmasri/Store/blob/master/images/app.png)
+
+----
+
+###postman
+
+please check the postman collection to get the idea of how send data and get data will be found in folder postman
+
+---
+
+###run application 
+
+before run please right down:
+
+> mvn clean install 
+
+Enjoy :)
+
+---
+
+OS uased : Centos7 
+
+#Abdullah Al Masri 
+
+----
 
 ###End

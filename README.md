@@ -119,7 +119,8 @@ enter password if exists then
 
 > sudo docker-compose -f elk.yml up -d
 
-you will 
+you will see as below
+![](https://github.com/abdullahalmasri/Store/blob/master/images/docker.png)
 
 ###Images
 

@@ -26,12 +26,17 @@ Suppose you are having a e-store and there are two authority first one for admin
 ![](https://img.shields.io/github/issues/pandao/editor.md.svg) 
 ![](https://img.shields.io/bower/v/editor.md.svg)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 **Table of Contents**
 
 [TOCM]
 
 [TOC]
 
+<<<<<<< HEAD
 #pre-installation  [](https://github.com/pandao/editor.md "Heading link")
 
 - first need to download postgres i am using centos7, the link below have instruction to install postgres on your machine please choice the os that you are using on your machine.
@@ -52,6 +57,29 @@ Suppose you are having a e-store and there are two authority first one for admin
 
 1.Create table in postgresDB in centos7
 
+=======
+
+#pre-installation  [](https://github.com/pandao/editor.md "Heading link")
+
+- first need to download postgres i am using centos7, the link below have instruction to install postgres on your machine please choice the os that you are using on your machine.
+https://www.postgresql.org/download/
+- install java 11 the link below 
+https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A
+- maven 3.6.3 and set JAVA_HOME
+https://www.baeldung.com/install-maven-on-windows-linux-mac
+- docker 
+https://docs.docker.com/deskto!p/install/
+- intellij or any ide you like in my case i am using intellij so i will leave the url of installation down below
+https://www.jetbrains.com/help/idea/installation-guide.html
+- postman
+- Start code
+
+
+
+#Technical Specs :
+----
+1.Create table in postgresDB in centos7
+>>>>>>> master
 > sudo -i -u postgres
 > psql
 > \password 
@@ -59,6 +87,7 @@ Suppose you are having a e-store and there are two authority first one for admin
 > CREATE DATABASE "DATABASE_NAME";
 
 the DATABASE_NAME here either store for running application or storeTest to run the Test cases.
+<<<<<<< HEAD
 for running application change the DATABASE_NAME as below
     ``` url: jdbc:postgresql://localhost:5432/store ```
 
@@ -119,6 +148,122 @@ first you need to start docker i am using centos 7 so the command to start docke
 > sudo docker-compose -f elk.yml up -d
 
 you will 
+=======
+![](https://github.com/abdullahalmasri/Store/blob/master/images/database.png)
+
+https://logback.qos.ch/manual/layouts.html#coloring 
+logging info 
+
+~~Strikethrough~~ <s>Strikethrough (when enable html tag decode.)</s>
+*Italic*      _Italic_
+**Emphasis**  __Emphasis__
+***Emphasis Italic*** ___Emphasis Italic___
+
+Superscript: X<sub>2</sub>，Subscript: O<sup>2</sup>
+
+**Abbreviation(link HTML abbr tag)**
+
+The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.
+
+###Blockquotes
+
+> Blockquotes
+
+Paragraphs and Line Breaks
+                    
+> "Blockquotes Blockquotes", [Link](http://localhost/)。
+
+###Links
+
+[Links](http://localhost/)
+
+[Links with title](http://localhost/ "link title")
+
+`<link>` : <https://github.com>
+
+[Reference link][id/name] 
+
+[id/name]: http://link-url/
+
+GFM a-tail link @pandao
+
+###Code Blocks (multi-language) & highlighting
+
+####Inline code
+
+`$ npm install marked`
+
+####Code Blocks (Indented style)
+
+Indented 4 spaces, like `<pre>` (Preformatted Text).
+
+    <?php
+        echo "Hello world!";
+    ?>
+    
+Code Blocks (Preformatted text):
+
+    | First Header  | Second Header |
+    | ------------- | ------------- |
+    | Content Cell  | Content Cell  |
+    | Content Cell  | Content Cell  |
+
+####Javascript　
+
+```javascript
+function test(){
+	console.log("Hello world!");
+}
+ 
+(function(){
+    var box = function(){
+        return box.fn.init();
+    };
+
+    box.prototype = box.fn = {
+        init : function(){
+            console.log('box.init()');
+
+			return this;
+        },
+
+		add : function(str){
+			alert("add", str);
+
+			return this;
+		},
+
+		remove : function(str){
+			alert("remove", str);
+
+			return this;
+		}
+    };
+    
+    box.fn.init.prototype = box.fn;
+    
+    window.box =box;
+})();
+
+var testBox = box();
+testBox.add("jQuery").remove("jQuery");
+```
+
+####HTML code
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charest="utf-8" />
+        <title>Hello world!</title>
+    </head>
+    <body>
+        <h1>Hello world!</h1>
+    </body>
+</html>
+```
+>>>>>>> master
 
 ###Images
 
@@ -137,7 +282,11 @@ Image:
 [![](https://pandao.github.io/editor.md/examples/images/7.jpg)](https://pandao.github.io/editor.md/examples/images/7.jpg "李健首张专辑《似水流年》封面")
 
 > 图为：李健首张专辑《似水流年》封面
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> master
 ----
 
 ###Lists
@@ -147,7 +296,11 @@ Image:
 - Item A
 - Item B
 - Item C
+<<<<<<< HEAD
 
+=======
+     
+>>>>>>> master
 ####Unordered list (*)
 
 * Item A
@@ -155,6 +308,7 @@ Image:
 * Item C
 
 ####Unordered list (plus sign and nested)
+<<<<<<< HEAD
 
 + Item A
 + Item B
@@ -203,6 +357,56 @@ Image:
 | col 2 is      | centered        | $12           |
 | zebra stripes | are neat        | $1            |
 
+=======
+                
++ Item A
++ Item B
+    + Item B 1
+    + Item B 2
+    + Item B 3
++ Item C
+    * Item C 1
+    * Item C 2
+    * Item C 3
+
+####Ordered list
+                
+1. Item A
+2. Item B
+3. Item C
+                
+----
+                    
+###Tables
+                    
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell 
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+| Function name | Description                    |
+| ------------- | ------------------------------ |
+| `help()`      | Display the help window.       |
+| `destroy()`   | **Destroy your computer!**     |
+
+| Item      | Value |
+| --------- | -----:|
+| Computer  | $1600 |
+| Phone     |   $12 |
+| Pipe      |    $1 |
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+                
+>>>>>>> master
 ----
 
 ####HTML entities
@@ -225,12 +429,21 @@ X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
 - [x] GFM task list 1
 - [x] GFM task list 2
 - [ ] GFM task list 3
+<<<<<<< HEAD
   - [ ] GFM task list 3-1
   - [ ] GFM task list 3-2
   - [ ] GFM task list 3-3
 - [ ] GFM task list 4
   - [ ] GFM task list 4-1
   - [ ] GFM task list 4-2
+=======
+    - [ ] GFM task list 3-1
+    - [ ] GFM task list 3-2
+    - [ ] GFM task list 3-3
+- [ ] GFM task list 4
+    - [ ] GFM task list 4-1
+    - [ ] GFM task list 4-2
+>>>>>>> master
 
 ###Emoji mixed :smiley:
 
@@ -243,19 +456,33 @@ X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
 - [x] [ ] :smiley: this is a complete item :smiley:;
 - [ ] []this is an incomplete item [test link](#) :fa-star: @pandao; 
 - [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
+<<<<<<< HEAD
   - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
   - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
 
 ###TeX(LaTeX)
 
+=======
+    - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
+    - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
+            
+###TeX(LaTeX)
+   
+>>>>>>> master
 $$E=mc^2$$
 
 Inline $$E=mc^2$$ Inline，Inline $$E=mc^2$$ Inline。
 
 $$\(\sqrt{3x-1}+(1+x)^2\)$$
+<<<<<<< HEAD
 
 $$\sin(\alpha)^{\theta}=\sum_{i=0}^{n}(x^i + \cos(f))$$
 
+=======
+                    
+$$\sin(\alpha)^{\theta}=\sum_{i=0}^{n}(x^i + \cos(f))$$
+                
+>>>>>>> master
 ###FlowChart
 
 ```flow
@@ -270,7 +497,11 @@ cond(no)->op
 ```
 
 ###Sequence Diagram
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> master
 ```seq
 Andrew->China: Says Hello 
 Note right of China: China thinks\nabout it 
@@ -278,4 +509,8 @@ China-->Andrew: How are you?
 Andrew->>China: I am good thanks!
 ```
 
+<<<<<<< HEAD
 ###End
+=======
+###End
+>>>>>>> master

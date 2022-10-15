@@ -131,7 +131,7 @@ enter password if exists then
 > sudo docker-compose -f elk.yml up -d
 
 you will see as below
-![](https://github.com/abdullahalmasri/Store/blob/master/images/docker.png)
+![](https://github.com/abdullahalmasri/Store/blob/master/images/docker-elk.png)
 
 the elasticsearch will connect to localhost:9200
 and kibana at localhost:5601 
